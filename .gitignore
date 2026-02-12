@@ -1,0 +1,36 @@
+# Binaries
+/bin/
+/*.exe
+/*.exe~
+/*.dll
+/*.so
+/*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Proto generated code
+/api/proto/pb/
+
+# IDE directories
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Uploaded files (локальные загрузки не должны попадать в репозиторий)
+/uploads/
+
+# Coverage report
+coverage.out
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*~
