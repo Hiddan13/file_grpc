@@ -43,28 +43,44 @@ docker exec -it file_grpc bash
 
 chmod +x file_grpc/testing.sh
 
-./file_grpc/testing.sh
+cd file_grpc
+ls my_test_repo ### ничего пока нет
+./testing.sh
+ls my_test_repo ### есть файл из тестов
 
 ### Установка и запуск bash 
 
 ```bash
+# Запустим докер 
+docker run -it --rm --name file_grpc_test golang:1.25 bash
+# Установим необходимые пакеты
+apt update && apt install -y make protobuf-compiler git
 # Клонируйте репозиторий
-git clone https://github.com/Hiddan13/github.com/Hiddan13/file_grpc.git
-cd file-grpc
+git clone https://github.com/Hiddan13/file_grpc.git
+cd file_grpc
 
-# Установите зависимости и сгенерируйте protobuf
-make deps
-make proto
+# Создаём тестовый файл 
+echo "Тест загрузки gRPC из тестового Docker" > test.txt
 
-# Соберите сервер и клиент
-make build
+# Установите зависимости и сгенерируйте protobuf соберем сервер и клиент
+make deps proto build
 
-# Запустите сервер
-./bin/server
-# или
-make run-server
 
-# В другом терминале – примеры клиента
-./bin/client -action upload -file test.jpg
+# Запустите сервер в фоне
+./bin/server &
+
+# Загружаем файл
+./bin/client -action upload -file test.txt
+
+# Получаем список файлов
 ./bin/client -action list
-./bin/client -action download -file test.jpg
+
+# Скачиваем файл
+./bin/client -action download -file test.txt
+
+# Проверяем содержимое
+cat downloaded_test.txt
+
+# Убеждаемся, что файл сохранён на сервере
+ls -la my_test_repo/
+

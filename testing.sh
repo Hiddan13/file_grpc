@@ -62,8 +62,8 @@ fi
 
 # 6. Проверяем, что файл сохранился на диске сервера
 echo "[6/6] Проверка сохранения на диск..."
-if [ -f "uploads/test.jpg" ]; then
-    SERVER_SIZE=$(stat -c%s "uploads/test.jpg" 2>/dev/null || stat -f%z "uploads/test.jpg" 2>/dev/null)
+if [ -f "my_test_repo/test.jpg" ]; then
+    SERVER_SIZE=$(stat -c%s "my_test_repo/test.jpg" 2>/dev/null || stat -f%z "my_test_repo/test.jpg" 2>/dev/null)
     echo "✅ Файл сохранён на сервере (размер: $SERVER_SIZE байт)"
 else
     echo -e "${RED}❌ Файл не найден в uploads/ ${NC}"
