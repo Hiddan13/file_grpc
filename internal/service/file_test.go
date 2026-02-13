@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"file_grpc/internal/repository"
+	"github.com/Hiddan13/file_grpc/internal/repository"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

@@ -1,4 +1,4 @@
-module file_grpc
+module github.com/Hiddan13/file_grpc
 
 go 1.25.5
 

@@ -23,6 +23,7 @@ gRPC сервис для загрузки, скачивания и просмо�
 - gRPC
 - Protocol Buffers
 - Testify (тестирование)
+- Docker
 
 ## Быстрый старт
 
@@ -31,11 +32,24 @@ gRPC сервис для загрузки, скачивания и просмо�
 - Установленный Go (версия 1.25)
 - Установленный protoc и плагины (см. `make deps`)
 
-### Установка и запуск
+### Установка и запуск через Docker
+
+```bash
+docker run -d -p 50051:50051 --name file_grpc golang:1.25 bash -c "apt update && apt install -y make protobuf-compiler && rm -rf file_grpc && git clone https://github.com/Hiddan13/file_grpc.git && cd file_grpc && make deps proto build && ./bin/server"
+
+### Дождаться завершения установки
+
+docker exec -it file_grpc bash 
+
+chmod +x file_grpc/testing.sh
+
+./file_grpc/testing.sh
+
+### Установка и запуск bash 
 
 ```bash
 # Клонируйте репозиторий
-git clone https://github.com/Hiddan13/file_grpc.git
+git clone https://github.com/Hiddan13/github.com/Hiddan13/file_grpc.git
 cd file-grpc
 
 # Установите зависимости и сгенерируйте protobuf

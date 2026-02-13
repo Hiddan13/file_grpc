@@ -9,7 +9,7 @@ import (
 	"os"
 	"time"
 
-	"file_grpc/api/proto/pb"
+	"github.com/Hiddan13/file_grpc/api/proto/pb"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"

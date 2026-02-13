@@ -4,11 +4,11 @@ import (
 	"log"
 	"net"
 
-	"file_grpc/api/proto/pb"
-	"file_grpc/internal/config"
-	"file_grpc/internal/repository"
-	"file_grpc/internal/service"
-	grpcTransport "file_grpc/internal/transport/grpc"
+	"github.com/Hiddan13/file_grpc/api/proto/pb"
+	"github.com/Hiddan13/file_grpc/internal/config"
+	"github.com/Hiddan13/file_grpc/internal/repository"
+	"github.com/Hiddan13/file_grpc/internal/service"
+	grpcTransport "github.com/Hiddan13/file_grpc/internal/transport/grpc"
 
 	"google.golang.org/grpc"
 )

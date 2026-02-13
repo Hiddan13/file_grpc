@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"file_grpc/internal/repository"
+	"github.com/Hiddan13/file_grpc/internal/repository"
 )
 
 type FileService struct {

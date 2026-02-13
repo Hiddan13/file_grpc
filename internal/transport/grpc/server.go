@@ -6,8 +6,8 @@ import (
 	"log"
 	"time"
 
-	"file_grpc/api/proto/pb"
-	"file_grpc/internal/service"
+	"github.com/Hiddan13/file_grpc/api/proto/pb"
+	"github.com/Hiddan13/file_grpc/internal/service"
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
