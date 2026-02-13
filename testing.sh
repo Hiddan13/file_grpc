@@ -15,18 +15,24 @@ echo "Hello gRPC from test script" > test.jpg
 TEST_CONTENT="Hello gRPC from test script"
 echo "✅ Тестовый файл создан: test.jpg (${#TEST_CONTENT} байт)"
 
-# # 2. Запускаем сервер в фоне
-# echo "[2/7] Запуск gRPC сервера..."
-# ./bin/server > server.log 2>&1 &
-# SERVER_PID=$!
-# sleep 2  # даём серверу время подняться
-# if kill -0 $SERVER_PID 2>/dev/null; then
-#     echo "✅ Сервер запущен (PID: $SERVER_PID)"
-# else
-#     echo -e "${RED}❌ Сервер не запустился${NC}"
-#     cat server.log
-#     exit 1
-# fi
+# 2. Проверяем, запущен ли сервер на порту 50051
+SERVER_UP=false
+if nc -z localhost 50051 2>/dev/null; then
+    echo "[2/7] Сервер уже запущен на порту 50051, используем его"
+    SERVER_UP=true
+else
+    echo "[2/7] Запуск gRPC сервера..."
+    ./bin/server > server.log 2>&1 &
+    SERVER_PID=$!
+    sleep 2
+    if kill -0 $SERVER_PID 2>/dev/null; then
+        echo "✅ Сервер запущен (PID: $SERVER_PID)"
+    else
+        echo -e "${RED}❌ Сервер не запустился${NC}"
+        cat server.log
+        exit 1
+    fi
+fi
 
 # 3. Загружаем файл
 echo "[3/7] Загрузка файла..."
